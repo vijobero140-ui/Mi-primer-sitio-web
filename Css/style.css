@@ -1,144 +1,141 @@
 
+/* ============================================================
+   BASE STYLES — Mobile First
+   Default layout: single column, full-width cards
+   ============================================================ */
+
+/* --- Reset & Global --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    background-color: #dedede;
+  font-family: Georgia, 'Times New Roman', serif;
+  background-color: #f5f0eb;
+  color: #2c2c2c;
+  min-height: 100vh;
 }
 
-h1 {
-    text-align: center;
-    font-family:Arial, sans-serif;
-    font-size: 32px;
-}
-
-a {
-    color: #000;
-    text-decoration: none;
-    font-family:Arial, sans-serif;
-}
-
-p {
-   font-size: 25px;
-   font-family:Arial, sans-serif;
-}
-
-img{
-  width:100%;
-}
-
-
-p{
-  text-align:center;
-}
-
-div img{
-    width:150px;
-    height: 150px;
-    display:block;
-    margin:auto;
-}
-
-div{
-  display: inline-block;
-  width: 24%;
-  margin: 5px;
-  padding: 2px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-main {
-    border: 5px #000 solid;
-    margin: 10px;
-}
- */
-/* 
-
-.container {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-}
- */
-/* img{
-    width: 200px;
-    height: 200px;
-    padding: 5px;
-} */
-
-/* .child {
-    position: relative;
-    display: inline-block;
-    border: 5px black solid;
-    margin: 5px;
-    border-radius: 5px;
-} */
-
-/* 
-
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.button {
-    display: inline-block;
-    border: 2px solid #000;
-    padding: 5px;
-    border-radius: 25px;
-}
- */
-/* 
-.button:hover {
-    background-color:#fff;
-} */
-
-/* 
-footer {
-    display: flex;
-    justify-content: center;
-} */
-
-/* 
+/* --- Header --- */
 header {
-    border-radius: 5px;
-    border: 5px #000 solid;
-    margin: 10px;
-} */
+  background-color: #2c4a3e;
+  color: #f5f0eb;
+  text-align: center;
+  padding: 2rem 1rem;
+}
 
-/* 
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.child:hover .label {
-    display: block;
-} */
+header h1 {
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+}
+
+header .subtitle {
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+  opacity: 0.75;
+  font-style: italic;
+}
+
+/* --- Gallery Container --- */
+/* Mobile: single column, items stacked vertically */
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* --- Card --- */
+/* Mobile: full viewport width (minus padding) */
+.card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Card Image --- */
+/* Mobile: no height restriction — image scales naturally */
+.card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* --- Card Body --- */
+.card-body {
+  padding: 1.1rem 1.25rem 1.4rem;
+}
+
+.card-body h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  color: #2c4a3e;
+}
+
+.card-body p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.8rem;
+  color: #888;
+  border-top: 1px solid #ddd;
+  margin-top: 1rem;
+}
+
+
+/* ============================================================
+   MEDIA QUERY #1 — Tablet View
+   Triggers at 772px viewport width
+   Layout: two cards per row (45% vw each)
+   Images: max-height 30vh
+   ============================================================ */
+@media (min-width: 772px) {
+
+  /* Two cards per row by setting each to 45% viewport width */
+  .card {
+    width: 45vw;
+    /* display is already flex-item; flex-wrap in container
+       handles the two-column wrapping automatically */
+  }
+
+  /* Restrict image height to no more than 30% of viewport height */
+  .card img {
+    max-height: 30vh;
+    /* object-fit: cover keeps the image filling the width
+       while respecting the max-height constraint */
+    object-fit: cover;
+  }
+
+  header h1 {
+    font-size: 2.4rem;
+  }
+
+}
+
+
+/* ============================================================
+   MEDIA QUERY #2 — Large Screen View
+   Triggers at 998px viewport width
+   Layout: three cards per row (30% vw each)
+   ============================================================ */
+@media (min-width: 998px) {
+
+  /* Three cards per row by setting each to 30% viewport width */
+  .card {
+    width: 30vw;
+  }
+
+}
